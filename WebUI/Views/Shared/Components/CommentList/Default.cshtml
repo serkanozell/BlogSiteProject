@@ -1,0 +1,10 @@
+﻿
+
+@using WebUI.Models
+@model IEnumerable<UserComment>
+
+@foreach (var item in Model)
+{
+    <p>@item.ID</p>
+    <p>@item.UserName</p>
+}
