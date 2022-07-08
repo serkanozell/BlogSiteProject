@@ -52,6 +52,11 @@ namespace BusinessLayer.Concrete
             return _blogRepository.GetAll();
         }
 
+        public List<Blog> GetLastThreeBlog()
+        {
+            return _blogRepository.GetAll().Take(3).ToList();
+        }
+
         public List<Blog> GetBlogListByWriterId(int id)
         {
             return _blogRepository.GetAll(x => x.WriterID == id);
