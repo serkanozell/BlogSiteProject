@@ -18,8 +18,8 @@ namespace WebUI.ViewComponents.Blog
 
         public IViewComponentResult Invoke()
         {
-            _blogService.GetBlogListByWriterId(1);
-            return View();
+            var result = _blogService.GetBlogListByWriterId(6);
+            return View(result);
         }
     }
 }

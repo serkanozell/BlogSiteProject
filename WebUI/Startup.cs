@@ -39,6 +39,10 @@ namespace WebUI
             services.AddTransient<IWriterRepository, WriterRepository>();
             services.AddTransient<INewsLetterService, NewsLetterManager>();
             services.AddTransient<INewsLetterRepository, NewsLetterRepository>();
+            services.AddTransient<IAboutService, AboutManager>();
+            services.AddTransient<IAboutRepository, AboutRepository>();
+            services.AddTransient<IContactService, ContactManager>();
+            services.AddTransient<IContactRepository, ContactRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
