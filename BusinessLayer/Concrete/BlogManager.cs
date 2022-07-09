@@ -54,7 +54,7 @@ namespace BusinessLayer.Concrete
 
         public List<Blog> GetLastThreeBlog()
         {
-            return _blogRepository.GetAll().Take(3).ToList();
+            return _blogRepository.GetAll().TakeLast(3).ToList();
         }
 
         public List<Blog> GetBlogListByWriterId(int id)
