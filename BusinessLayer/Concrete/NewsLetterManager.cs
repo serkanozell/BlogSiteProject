@@ -18,9 +18,28 @@ namespace BusinessLayer.Concrete
             _newsLetterRepository = newsLetterRepository;
         }
 
-        public void AddNewsLetter(NewsLetter newsLetter)
+        public void TAdd(NewsLetter entity)
         {
-            _newsLetterRepository.Add(newsLetter);
+            _newsLetterRepository.Add(entity);
+        }
+
+        public void TDelete(NewsLetter entity)
+        {
+            _newsLetterRepository.Delete(entity);
+        }
+
+        public void TUptade(NewsLetter entity)
+        {
+            _newsLetterRepository.Update(entity);
+        }
+        public NewsLetter GetByID(int id)
+        {
+            return _newsLetterRepository.GetById(id);
+        }
+
+        public List<NewsLetter> GetList()
+        {
+            return _newsLetterRepository.GetAll();
         }
     }
 }

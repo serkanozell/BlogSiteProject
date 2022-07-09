@@ -18,7 +18,7 @@ namespace WebUI.ViewComponents.Comment
 
         public IViewComponentResult Invoke(int id)
         {
-            var commentBlogList = _commentService.GetList(id);
+            var commentBlogList = _commentService.GetListById(id);
             return View(commentBlogList);
         }
     }

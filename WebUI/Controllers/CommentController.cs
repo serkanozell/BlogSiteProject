@@ -34,7 +34,7 @@ namespace WebUI.Controllers
             comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             comment.CommentStatus = true;
             comment.BlogID = 4;
-            _commentService.CommentAdd(comment);
+            _commentService.TAdd(comment);
             return PartialView();
         }
 
@@ -44,7 +44,7 @@ namespace WebUI.Controllers
         }
         public PartialViewResult CommentListByBlog(int id)
         {
-            var result = _commentService.GetList(id);
+            var result = _commentService.GetListById(id);
             return PartialView(result);
         }
     }

@@ -17,10 +17,30 @@ namespace BusinessLayer.Concrete
         {
             _aboutRepository = aboutRepository;
         }
+        public void TAdd(About entity)
+        {
+            _aboutRepository.Add(entity);
+        }
+
+        public void TDelete(About entity)
+        {
+            _aboutRepository.Delete(entity);
+        }
+
+        public void TUptade(About entity)
+        {
+            _aboutRepository.Update(entity);
+        }
+        public About GetByID(int id)
+        {
+            return _aboutRepository.GetById(id);
+        }
 
         public List<About> GetList()
         {
             return _aboutRepository.GetAll();
         }
+
+
     }
 }

@@ -17,19 +17,19 @@ namespace BusinessLayer.Concrete
             _blogRepository = blogRepository;
         }
 
-        public void BlogAdd(Blog blog)
+        public void TAdd(Blog entity)
         {
-            throw new NotImplementedException();
+            _blogRepository.Add(entity);
         }
 
-        public void BlogDelete(Blog blog)
+        public void TDelete(Blog entity)
         {
-            throw new NotImplementedException();
+            _blogRepository.Delete(entity);
         }
 
-        public void BlogUpdate(Blog blog)
+        public void TUptade(Blog entity)
         {
-            throw new NotImplementedException();
+            _blogRepository.Update(entity);
         }
 
         public List<Blog> GetBlogListWithCategory()

@@ -27,7 +27,7 @@ namespace WebUI.Controllers
         public PartialViewResult SubscribeMail(NewsLetter newsLetter)
         {
             newsLetter.MailStatus = true;
-            _newsLetterService.AddNewsLetter(newsLetter);
+            _newsLetterService.TAdd(newsLetter);
             return PartialView();
         }
     }

@@ -17,10 +17,29 @@ namespace BusinessLayer.Concrete
         {
             _writerRepository = writerRepository;
         }
-
-        public void WriterAdd(Writer writer)
+        public void TAdd(Writer entity)
         {
-            _writerRepository.Add(writer);
+            _writerRepository.Add(entity);
+        }
+
+        public void TDelete(Writer entity)
+        {
+            _writerRepository.Delete(entity);
+        }
+
+        public void TUptade(Writer entity)
+        {
+            _writerRepository.Update(entity);
+        }
+
+        public Writer GetByID(int id)
+        {
+            return _writerRepository.GetById(id);
+        }
+
+        public List<Writer> GetList()
+        {
+            return _writerRepository.GetAll();
         }
     }
 }

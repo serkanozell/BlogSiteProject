@@ -34,7 +34,7 @@ namespace WebUI.Controllers
             {
                 writer.WriterStatus = true;
                 writer.WriterAbout = "Writer Test Word";
-                _writerService.WriterAdd(writer);
+                _writerService.TAdd(writer);
                 return RedirectToAction("Index", "Blog");
             }
             else

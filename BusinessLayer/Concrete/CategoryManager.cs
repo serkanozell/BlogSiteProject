@@ -15,21 +15,20 @@ namespace BusinessLayer.Concrete
             _categoryRepository = categoryRepository;
         }
 
-        public void CategoryAdd(Category category)
+        public void TAdd(Category entity)
         {
-            _categoryRepository.Add(category);
+            _categoryRepository.Add(entity);
         }
 
-        public void CategoryDelete(Category category)
+        public void TDelete(Category entity)
         {
-            _categoryRepository.Delete(category);
+            _categoryRepository.Add(entity);
         }
 
-        public void CategoryUpdate(Category category)
+        public void TUptade(Category entity)
         {
-            _categoryRepository.Update(category);
+            _categoryRepository.Add(entity);
         }
-
         public Category GetByID(int id)
         {
             return _categoryRepository.GetById(id);
@@ -39,5 +38,6 @@ namespace BusinessLayer.Concrete
         {
             return _categoryRepository.GetAll();
         }
+
     }
 }

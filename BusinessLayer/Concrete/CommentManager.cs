@@ -18,29 +18,33 @@ namespace BusinessLayer.Concrete
             _commentRepository = commentRepository;
         }
 
-        public void CommentAdd(Comment comment)
+        public void TAdd(Comment entity)
         {
-            _commentRepository.Add(comment);
+            _commentRepository.Add(entity);
         }
 
-        public void CommentDelete(Comment comment)
+        public void TDelete(Comment entity)
         {
-            _commentRepository.Delete(comment);
+            _commentRepository.Delete(entity);
         }
 
-        public void CommentUpdate(Comment comment)
+        public void TUptade(Comment entity)
         {
-            _commentRepository.Update(comment);
+            _commentRepository.Update(entity);
         }
-
         public Comment GetByID(int id)
         {
             return _commentRepository.GetById(id);
         }
 
-        public List<Comment> GetList(int id)
+        public List<Comment> GetList()
         {
-            return _commentRepository.GetAll(x => x.BlogID == id);
+            return _commentRepository.GetAll();
+        }
+
+        public List<Comment> GetListById(int id)
+        {
+            return _commentRepository.GetAll(c => c.CommentID == id);
         }
     }
 }

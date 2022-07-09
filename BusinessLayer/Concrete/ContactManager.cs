@@ -17,10 +17,25 @@ namespace BusinessLayer.Concrete
         {
             _contactRepository = contactRepository;
         }
-
-        public void ContactAdd(Contact contact)
+        public void TAdd(Contact entity)
         {
-            _contactRepository.Add(contact);
+            _contactRepository.Add(entity);
+        }
+        public void TDelete(Contact entity)
+        {
+            _contactRepository.Delete(entity);
+        }
+        public void TUptade(Contact entity)
+        {
+            _contactRepository.Update(entity);
+        }
+        public Contact GetByID(int id)
+        {
+            return _contactRepository.GetById(id);
+        }
+        public List<Contact> GetList()
+        {
+            return _contactRepository.GetAll();
         }
     }
 }
