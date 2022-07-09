@@ -32,7 +32,7 @@ namespace BusinessLayer.Concrete
         {
             _newsLetterRepository.Update(entity);
         }
-        public NewsLetter GetByID(int id)
+        public NewsLetter TGetByID(int id)
         {
             return _newsLetterRepository.GetById(id);
         }

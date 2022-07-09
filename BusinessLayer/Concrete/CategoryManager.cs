@@ -29,7 +29,7 @@ namespace BusinessLayer.Concrete
         {
             _categoryRepository.Add(entity);
         }
-        public Category GetByID(int id)
+        public Category TGetByID(int id)
         {
             return _categoryRepository.GetById(id);
         }

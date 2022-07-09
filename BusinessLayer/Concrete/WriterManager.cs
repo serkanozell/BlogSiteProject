@@ -32,7 +32,7 @@ namespace BusinessLayer.Concrete
             _writerRepository.Update(entity);
         }
 
-        public Writer GetByID(int id)
+        public Writer TGetByID(int id)
         {
             return _writerRepository.GetById(id);
         }

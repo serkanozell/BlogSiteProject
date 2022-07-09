@@ -81,9 +81,30 @@ namespace WebUI.Controllers
 
         public IActionResult DeleteBlog(int id)
         {
-            var blogValue = _blogService.GetByID(id);
+            var blogValue = _blogService.TGetByID(id);
             _blogService.TDelete(blogValue);
-            return RedirectToAction("BlogListByWriter","Blog");
+            return RedirectToAction("BlogListByWriter", "Blog");
+        }
+
+        [HttpGet]
+        public IActionResult EditBlog(int id)
+        {
+            var blogEntity = _blogService.TGetByID(id);
+            List<SelectListItem> categoryValues = (from x in _categoryService.GetList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString()
+                                                   }).ToList();
+            ViewBag.cv = categoryValues;
+            return View(blogEntity);
+        }
+
+        [HttpPost]
+        public IActionResult EditBlog(Blog blog)
+        {
+            _blogService.TUptade(blog);
+            return RedirectToAction("BlogListByWriter");
         }
     }
 }

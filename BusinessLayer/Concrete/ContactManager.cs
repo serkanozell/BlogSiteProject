@@ -29,7 +29,7 @@ namespace BusinessLayer.Concrete
         {
             _contactRepository.Update(entity);
         }
-        public Contact GetByID(int id)
+        public Contact TGetByID(int id)
         {
             return _contactRepository.GetById(id);
         }

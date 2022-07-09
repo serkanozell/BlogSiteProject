@@ -31,7 +31,7 @@ namespace BusinessLayer.Concrete
         {
             _aboutRepository.Update(entity);
         }
-        public About GetByID(int id)
+        public About TGetByID(int id)
         {
             return _aboutRepository.GetById(id);
         }

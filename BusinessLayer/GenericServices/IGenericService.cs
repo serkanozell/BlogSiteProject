@@ -12,6 +12,6 @@ namespace BusinessLayer.GenericServices
         void TDelete(T entity);
         void TUptade(T entity);
         List<T> GetList();
-        T GetByID(int id);
+        T TGetByID(int id);
     }
 }

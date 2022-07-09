@@ -32,7 +32,7 @@ namespace BusinessLayer.Concrete
         {
             _commentRepository.Update(entity);
         }
-        public Comment GetByID(int id)
+        public Comment TGetByID(int id)
         {
             return _commentRepository.GetById(id);
         }
