@@ -20,5 +20,15 @@ namespace DataAccessLayer.Repositories
                 return context.Blogs.Include(x => x.Category).ToList();
             }
         }
+
+        public List<Blog> GetBlogListWithCategoryByWriterId(int id)
+        {
+            using (var context = new Context())
+            {
+                return context.Blogs.Include(x => x.Category)
+                                    .Where(x => x.WriterID == id)
+                                    .ToList();
+            }
+        }
     }
 }

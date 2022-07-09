@@ -11,5 +11,6 @@ namespace DataAccessLayer.Abstract
     public interface IBlogRepository : IEntityRepository<Blog>
     {
         List<Blog> GetBlogListWithCategory();
+        List<Blog> GetBlogListWithCategoryByWriterId(int id);
     }
 }

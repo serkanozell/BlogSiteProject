@@ -37,6 +37,11 @@ namespace BusinessLayer.Concrete
             return _blogRepository.GetBlogListWithCategory();
         }
 
+        public List<Blog> GetListWtihCategoryByWriterId(int id)
+        {
+            return _blogRepository.GetBlogListWithCategoryByWriterId(id);
+        }
+
         public Blog GetByID(int id)
         {
             return _blogRepository.GetById(id);
