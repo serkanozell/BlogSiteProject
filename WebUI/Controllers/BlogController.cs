@@ -30,6 +30,7 @@ namespace WebUI.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;
