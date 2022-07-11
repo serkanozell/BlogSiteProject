@@ -65,6 +65,8 @@ namespace WebUI
             services.AddTransient<IContactRepository, ContactRepository>();
             services.AddTransient<INotificationService, NotificationManager>();
             services.AddTransient<INotificationRepository, NotificationRepository>();
+            services.AddTransient<IMessageService, MessageManager>();
+            services.AddTransient<IMessageRepository, MessageRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
