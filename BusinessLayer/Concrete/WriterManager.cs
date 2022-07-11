@@ -41,5 +41,10 @@ namespace BusinessLayer.Concrete
         {
             return _writerRepository.GetAll();
         }
+
+        public List<Writer> GetWriterById(int id)
+        {
+            return _writerRepository.GetAll(x => x.WriterID == id);
+        }
     }
 }
