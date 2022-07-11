@@ -9,16 +9,17 @@ namespace WebUI.ViewComponents.Writer
 {
     public class WriterNotification : ViewComponent
     {
-        IWriterService _writerService;
+        INotificationService _notificationService;
 
-        public WriterNotification(IWriterService writerService)
+        public WriterNotification(INotificationService notificationService)
         {
-            _writerService = writerService;
+            _notificationService = notificationService;
         }
 
         public IViewComponentResult Invoke()
         {
-            return View();
+            var result = _notificationService.GetList().Where(x=>x.NotificationStatus==true).ToList();
+            return View(result);
         }
     }
 }

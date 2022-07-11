@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         [AllowAnonymous]
