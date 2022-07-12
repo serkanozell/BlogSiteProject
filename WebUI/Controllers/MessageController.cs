@@ -1,28 +1,37 @@
 ﻿using BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebUI.ViewComponents.Writer
+namespace WebUI.Controllers
 {
-    public class WriterMessageNotification : ViewComponent
+    [AllowAnonymous]
+    public class MessageController : Controller
     {
-        IWriterService _writerService;
         IMessage2Service _message2Service;
 
-        public WriterMessageNotification(IWriterService writerService, IMessageService messageService, IMessage2Service message2Service)
+        public MessageController(IMessage2Service message2Service)
         {
-            _writerService = writerService;
             _message2Service = message2Service;
         }
 
-        public IViewComponentResult Invoke()
+        public IActionResult InBox()
         {
             int id = 1;
             var result = _message2Service.GetMessageInBoxListByWriterId(id);
             return View(result);
         }
+
+
+        [HttpGet]
+        public IActionResult MessageDetails(int id)
+        {
+            var result = _message2Service.TGetByID(id);
+            return View(result);
+        }
+
     }
 }

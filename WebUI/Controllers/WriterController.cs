@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
@@ -13,7 +14,6 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    [AllowAnonymous]
     public class WriterController : Controller
     {
         IWriterService _writerService;
@@ -22,9 +22,14 @@ namespace WebUI.Controllers
         {
             _writerService = writerService;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
+            var userMail = User.Identity.Name;
+            ViewBag.v = userMail;
+            Context context = new Context();
+            var writerName = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterName).FirstOrDefault();
+            ViewBag.writerName = writerName;
             return View();
         }
 
