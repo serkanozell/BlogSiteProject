@@ -22,12 +22,12 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(Category entity)
         {
-            _categoryRepository.Add(entity);
+            _categoryRepository.Delete(entity);
         }
 
         public void TUptade(Category entity)
         {
-            _categoryRepository.Add(entity);
+            _categoryRepository.Update(entity);
         }
         public Category TGetByID(int id)
         {

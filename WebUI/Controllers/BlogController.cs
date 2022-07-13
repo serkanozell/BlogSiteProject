@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +13,6 @@ using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
-    [AllowAnonymous]
     public class BlogController : Controller
     {
         private readonly IBlogService _blogService;
@@ -30,7 +30,6 @@ namespace WebUI.Controllers
             return View(model);
         }
 
-        [AllowAnonymous]
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;
@@ -40,7 +39,12 @@ namespace WebUI.Controllers
 
         public IActionResult BlogListByWriter()
         {
-            var result = _blogService.GetListWtihCategoryByWriterId(6);
+            var userMail = User.Identity.Name;
+            Context context = new Context();
+            var writerId = context.Writers.Where(x => x.WriterMail == userMail)
+                                            .Select(y => y.WriterID)
+                                            .FirstOrDefault();
+            var result = _blogService.GetListWtihCategoryByWriterId(writerId);
             return View(result);
         }
 
@@ -60,13 +64,18 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult BlogAdd(Blog blog)
         {
+            var userMail = User.Identity.Name;
+            Context context = new Context();
+            var writerId = context.Writers.Where(x => x.WriterMail == userMail)
+                                            .Select(y => y.WriterID)
+                                            .FirstOrDefault();
             BlogValidator validationRules = new BlogValidator();
             ValidationResult result = validationRules.Validate(blog);
             if (result.IsValid)
             {
                 blog.BlogStatus = true;
                 blog.BlogCreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                blog.WriterID = 6;
+                blog.WriterID = writerId;
                 _blogService.TAdd(blog);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }
@@ -104,6 +113,14 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog blog)
         {
+            var userMail = User.Identity.Name;
+            Context context = new Context();
+            var writerId = context.Writers.Where(x => x.WriterMail == userMail)
+                                            .Select(y => y.WriterID)
+                                            .FirstOrDefault();
+            blog.WriterID = writerId;
+            blog.BlogCreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            blog.BlogStatus = true;
             _blogService.TUptade(blog);
             return RedirectToAction("BlogListByWriter");
         }

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,12 @@ namespace WebUI.ViewComponents.Writer
 
         public IViewComponentResult Invoke()
         {
-            var result = _writerService.GetWriterById(1);
+            var userMail = User.Identity.Name;
+            Context context = new Context();
+            var writerId = context.Writers.Where(x => x.WriterMail == userMail)
+                                            .Select(y => y.WriterID)
+                                            .FirstOrDefault();
+            var result = _writerService.GetWriterById(writerId);
             return View(result);
         }
     }

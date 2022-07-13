@@ -42,19 +42,16 @@ namespace WebUI.Controllers
         {
             return View();
         }
-        [AllowAnonymous]
         public IActionResult Test()
         {
             return View();
         }
 
-        [AllowAnonymous]
         public PartialViewResult WriterNavBarPartial()
         {
             return PartialView();
         }
 
-        [AllowAnonymous]
         public PartialViewResult WriterFooterPartial()
         {
             return PartialView();
@@ -63,7 +60,12 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var result = _writerService.TGetByID(1);
+            var userMail = User.Identity.Name;
+            Context context = new Context();
+            var writerId = context.Writers.Where(x => x.WriterMail == userMail)
+                                            .Select(y => y.WriterID)
+                                            .FirstOrDefault();
+            var result = _writerService.TGetByID(writerId);
             return View(result);
         }
         [HttpPost]

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
-    [AllowAnonymous]
     public class DashboardController : Controller
     {
         IBlogService _blogService;
