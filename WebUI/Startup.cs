@@ -69,6 +69,8 @@ namespace WebUI
             services.AddTransient<IMessageRepository, MessageRepository>();
             services.AddTransient<IMessage2Service, Message2Manager>();
             services.AddTransient<IMessage2Repository, Message2Repository>();
+            services.AddTransient<IAdminService, AdminManager>();
+            services.AddTransient<IAdminRepository, AdminRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
