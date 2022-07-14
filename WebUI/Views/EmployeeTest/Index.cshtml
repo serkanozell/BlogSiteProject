@@ -1,0 +1,32 @@
+﻿
+@using WebUI.Models
+@model List<EmployeeModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Name - Surname</th>
+
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EmployeeID</td>
+            <td>@item.EmployeeName</td>
+            <td><a href="#" class="btn btn-outline-danger">Delete</a></td>
+            <td><a href="#" class="btn btn-outline-success">Edit</a></td>
+        </tr>
+    }
+</table>
+
+<td><a href="/EmployeeTest/AddEmployee/" class="btn btn-outline-success">Add New Employee</a></td>
+
