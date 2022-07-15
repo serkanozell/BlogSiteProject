@@ -1,0 +1,20 @@
+﻿
+@using WebUI.Models
+@model EmployeeModel
+
+@{
+    ViewData["Title"] = "UpdateEmployee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Update Employee Page With API</h1>
+
+<form method="post">
+    <label>ID</label>
+    @Html.TextBoxFor(x => x.EmployeeID, new { @class = "form-control" })
+    <br />
+    <label>Employee Name Surname</label>
+    @Html.TextBoxFor(x => x.EmployeeName, new { @class = "form-control" })
+    <br />
+    <button type="submit" class="btn btn-success">Update Employee</button>
+</form>
