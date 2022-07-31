@@ -19,11 +19,13 @@ namespace WebUI.ViewComponents.Writer
 
         public IViewComponentResult Invoke()
         {
-            var userMail = User.Identity.Name;
+            var userName = User.Identity.Name;
+            ViewBag.userData = userName;
             Context context = new Context();
+            var userMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
             var writerId = context.Writers.Where(x => x.WriterMail == userMail)
-                                            .Select(y => y.WriterID)
-                                            .FirstOrDefault();
+                                                        .Select(y => y.WriterID)
+                                                        .FirstOrDefault();
             var result = _writerService.GetWriterById(writerId);
             return View(result);
         }

@@ -60,8 +60,9 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var userMail = User.Identity.Name;
             Context context = new Context();
+            var userName = User.Identity.Name;
+            var userMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
             var writerId = context.Writers.Where(x => x.WriterMail == userMail)
                                             .Select(y => y.WriterID)
                                             .FirstOrDefault();

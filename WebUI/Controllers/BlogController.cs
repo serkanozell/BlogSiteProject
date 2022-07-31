@@ -24,12 +24,14 @@ namespace WebUI.Controllers
             _categoryService = categoryService;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var model = _blogService.GetBlogListWithCategory();
             return View(model);
         }
 
+        [AllowAnonymous]
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;

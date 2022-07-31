@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
+    [AllowAnonymous]
     public class NewsLetterController : Controller
     {
         INewsLetterService _newsLetterService;
@@ -24,7 +26,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult SubscribeMail(NewsLetter newsLetter)
+        public IActionResult SubscribeMail(NewsLetter newsLetter)
         {
             newsLetter.MailStatus = true;
             _newsLetterService.TAdd(newsLetter);
