@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IMessage2Repository : IEntityRepository<Message2>
+    public interface IUserRepository : IEntityRepository<AppUser>
     {
-        List<Message2> GetMessageInBoxListByWriterRecieverId(int id);
-        List<Message2> GetMessageSendBoxListByWriterRecieverId(int id);
     }
 }

@@ -17,8 +17,20 @@ namespace DataAccessLayer.Repositories
         {
             using (var context = new Context())
             {
-                return context.Messages2.Include(x => x.SenderUser).Include(x=>x.ReceiverUser)
+                return context.Messages2.Include(x => x.SenderUser)
+                                        .Include(x => x.ReceiverUser)
                                         .Where(x => x.MessageReceiverID == id)
+                                        .ToList();
+            }
+        }
+
+        public List<Message2> GetMessageSendBoxListByWriterRecieverId(int id)
+        {
+            using (var context = new Context())
+            {
+                return context.Messages2.Include(x => x.ReceiverUser)
+                                        .Include(x => x.SenderUser)
+                                        .Where(x => x.MessageSenderID == id)
                                         .ToList();
             }
         }

@@ -10,7 +10,7 @@
 <h1>Message Detail Edit Page</h1>
 <br />
 
-@Html.Label("MEssage ID")
+@Html.Label("Message ID")
 @Html.TextBoxFor(x => x.MessageID, new { @class = "form-control" })
 <br />
 
@@ -23,5 +23,5 @@
 @Html.TextAreaFor(x => x.MessageDetails, 10, 3, new { @class = "form-control" ,disabled="disabled"})
 <br />
 
-<button class="btn btn-success">Return to Messages</button>
+<a href="/Message/Inbox/" class="btn btn-success">Return to Messages</a>
 

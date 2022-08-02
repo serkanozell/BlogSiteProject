@@ -73,6 +73,8 @@ namespace WebUI
             services.AddTransient<IMessage2Repository, Message2Repository>();
             services.AddTransient<IAdminService, AdminManager>();
             services.AddTransient<IAdminRepository, AdminRepository>();
+            services.AddTransient<IUserService, UserManager>();
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>(x =>
             {

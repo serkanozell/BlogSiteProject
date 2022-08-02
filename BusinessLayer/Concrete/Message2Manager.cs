@@ -44,5 +44,10 @@ namespace BusinessLayer.Concrete
         {
             return _message2Repository.GetMessageInBoxListByWriterRecieverId(id);
         }
+
+        public List<Message2> GetMessageSendBoxListByWriterId(int id)
+        {
+            return _message2Repository.GetMessageSendBoxListByWriterRecieverId(id);
+        }
     }
 }

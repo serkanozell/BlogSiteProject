@@ -47,39 +47,10 @@ namespace WebUI.Controllers
             return View();
         }
 
-
-
-        //[HttpPost]
-        //public async Task<IActionResult> Index(Writer writer)
-        //{
-        //    Context context = new Context();
-        //    var data = context.Writers.FirstOrDefault(w => w.WriterMail == writer.WriterMail && w.WriterPassword == writer.WriterPassword);
-        //    if (data is not null)
-        //    {
-        //        var claims = new List<Claim>
-        //        {
-        //            new Claim(ClaimTypes.Name, writer.WriterMail)
-        //        };
-        //        var userIdentity = new ClaimsIdentity(claims, "a");
-        //        ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(userIdentity);
-        //        await HttpContext.SignInAsync(claimsPrincipal);
-        //        return RedirectToAction("Index", "Dashboard");
-        //    }
-        //    else
-        //    {
-        //        return View();
-        //    }
-        //    //Context context = new Context();
-        //    //var data = context.Writers.FirstOrDefault(w => w.WriterMail == writer.WriterMail && w.WriterPassword == writer.WriterPassword);
-        //    //if (data != null)
-        //    //{
-        //    //    HttpContext.Session.SetString("username", writer.WriterMail);
-        //    //    return RedirectToAction("Index", "Writer");
-        //    //}
-        //    //else
-        //    //{
-        //    //    return View();
-        //    //}
-        //}
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Login");
+        }
     }
 }
