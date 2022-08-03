@@ -20,20 +20,21 @@ namespace WebUI.Controllers
         IWriterService _writerService;
         private readonly UserManager<AppUser> _userManager;
         IUserService _userService;
+        private readonly Context _context;
 
-        public WriterController(IWriterService writerService, UserManager<AppUser> userManager, IUserService userService)
+        public WriterController(IWriterService writerService, UserManager<AppUser> userManager, IUserService userService, Context context)
         {
             _writerService = writerService;
             _userManager = userManager;
             _userService = userService;
+            _context = context;
         }
         [Authorize]
         public IActionResult Index()
         {
             var userMail = User.Identity.Name;
             ViewBag.v = userMail;
-            Context context = new Context();
-            var writerName = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterName).FirstOrDefault();
+            var writerName = _context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterName).FirstOrDefault();
             ViewBag.writerName = writerName;
             return View();
         }
@@ -54,6 +55,9 @@ namespace WebUI.Controllers
 
         public PartialViewResult WriterNavBarPartial()
         {
+            //var userName = User.Identity.Name;
+            //var userNameSurname = _context.Users.Where(x => x.UserName == userName).Select(y => y.NameSurname).FirstOrDefault();
+            //ViewBag.userName = userName;
             return PartialView();
         }
 
