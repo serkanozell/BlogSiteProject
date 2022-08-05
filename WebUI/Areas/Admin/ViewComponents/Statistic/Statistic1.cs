@@ -27,7 +27,7 @@ namespace WebUI.Areas.Admin.ViewComponents.Statistic
             ViewBag.commentCount = context.Comments.Count();
 
             string api = "3a9ff604fd9b6a270336fbfc4b1c993b";
-            string connection = "https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&lang=tr&units=metric&appid=" + api;
+            string connection = "https://api.openweathermap.org/data/2.5/weather?q=kirklareli&mode=xml&lang=tr&units=metric&appid=" + api;
             XDocument document = XDocument.Load(connection);
             ViewBag.temp = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
             return View(result);

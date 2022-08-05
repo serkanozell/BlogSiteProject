@@ -10,5 +10,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface ICommentRepository : IEntityRepository<Comment>
     {
+        List<Comment> GetCommentListWithBlog();
     }
 }

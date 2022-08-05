@@ -1,0 +1,94 @@
+﻿
+
+@using EntityLayer.Concrete
+@model List<Comment>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*<td><input type="checkbox" class="i-checks" name="input[]"></td>*@
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Comments</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="#" class="dropdown-item">Config option 1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-item">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>User</th>
+                                    <th>Comment Title</th>
+                                    <th>Blog</th>
+                                    <th>Score</th>
+                                    <th>Date</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <th>@item.CommentID</th>
+                                    <td>@item.CommentUserName</td>
+                                    <td>@item.CommentTitle</td>
+                                    <td>@item.Blog.BlogTitle</td>
+                                    @if (0 <= item.BlogScore && item.BlogScore <= 3)
+                                    {
+                                        <td class="text-danger"> <i class="fa fa-level-up"></i>@item.BlogScore</td>
+                                    }
+                                    else if (4 <= item.BlogScore && item.BlogScore <= 6)
+                                    {
+                                        <td class="text-warning"> <i class="fa fa-level-up"></i>@item.BlogScore</td>
+                                    }
+                                    else if (7 <= item.BlogScore && item.BlogScore <= 8)
+                                    {
+                                        <td class="text-primary"> <i class="fa fa-level-up"></i>@item.BlogScore</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-navy"> <i class="fa fa-level-up"></i>@item.BlogScore</td>
+                                    }
+                                    <td>@((DateTime)item.CommentDate)</td>
+                                    <td><a href="#" class="btn-outline-danger">Delete</a></td>
+                                    <td><a href="#" class="btn-outline-success">Edit</a></td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
