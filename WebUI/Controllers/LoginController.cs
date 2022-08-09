@@ -52,5 +52,10 @@ namespace WebUI.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Login");
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
